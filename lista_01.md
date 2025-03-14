@@ -234,22 +234,29 @@ ______
 - Uma classe `Livro` que herda de `Produto` e modifica o método `calcularDesconto()`, aplicando um desconto de 20% no preço dos livros.
 
 Explique como funciona a herança nesse contexto e como você implementaria a modificação do método na classe `Livro`.
+
+A herança funciona para herdar os valores de nome e preço, assim como o método calcularDesconto, que é escrito pela classe filha quando há a necessidade de modificar o comportamento definido originalmente na classe pai. Esse processo, conhecido como sobrescrita de métodos, permite que a classe filha personalize a funcionalidade herdada sem precisar reescrever toda a estrutura da classe base. Dessa forma, a herança promove a reutilização de código, tornando o desenvolvimento mais eficiente e flexível, além de facilitar a manutenção e a extensão das funcionalidades existentes.
+ 
 ```javascript
-  class Produto{
-    constructor(nome, preco){
-      this.nome=nome;
-      this.preco=preco;
-    }
-    calcularDesconto(preco){
-      preco*=0.9;
-    }
+  class Produto {
+  constructor(nome, preco) {
+    this.nome = nome;
+    this.preco = preco;
   }
-  class Livro extends Produto{
-    constructor(nome, preco){
-      super(nome, preco);
-    }
-    calcularDesconto(preco){
-      preco*=0.8;
-    }
+  
+  calcularDesconto() {
+    this.preco *= 0.9; // Desconto de 10%
   }
+}
+
+class Livro extends Produto {
+  constructor(nome, preco) {
+    super(nome, preco);
+  }
+  
+  calcularDesconto() {
+    this.preco *= 0.8; // Desconto de 20% para livros
+  }
+}
   ```
+
