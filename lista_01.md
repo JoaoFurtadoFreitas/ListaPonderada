@@ -30,6 +30,7 @@ c) A saída será undefined seguido de undefined
 
 d) A saída será erro em ambas as linhas que utilizam console.log
 
+A alternativa correta é A. A variável x, declarada com var, é içada (hoisting), ou seja, é reconhecida antes de sua atribuição, mas sem valor, resultando em undefined. Já a variável y, declarada com let, não é içada da mesma forma e não pode ser acessada antes da sua declaração, resultando em um erro de referência (ReferenceError).
 
 **2) O seguinte código JavaScript tem um erro que impede sua execução correta. Analise e indique a opção que melhor corrige o problema. Justifique sua resposta.**
 
@@ -50,6 +51,8 @@ b) Substituir if (a || b === 0) por if (a === 0 && b === 0)
 c) Substituir if (a || b === 0) por if (a && b === 0)
 
 d) Remover completamente a verificação if (a || b === 0)
+
+A alternativa correta é a A, pois o erro do if consiste na sentença lógica incompleta, já que a não está sendo comparado a nada, o que gera um erro lógico.
 
 ______
 **3) Ao executar esse código, qual será a saída no console? Indique a alternativa correta e justifique sua resposta.**
@@ -84,6 +87,7 @@ c) O código imprime 50.
 
 d) O código gera um erro.
 
+A resposta correta é B, ou seja, o código imprime 200. A função recebe tipo como "eletronico", o que deveria gerar um resultado de 1000, porém não há um break na no case "eletronico", o que faz o código seguir para o próximo caso que faz o preco receber o valor 200, e então o break é usado, deixando preco com o valor 200.
 ______
 **4) Ao executar esse código, qual será a saída no console? Indique a alternativa correta e justifique sua resposta.**
 ```javascript
@@ -100,6 +104,8 @@ b) 6
 c) 18
 
 d) 24
+
+A saída será 24, ou seja, alternativa D. Resultado usa o método map com uma arrow function para multiplicar os valores do array números por 2. Já o método filter filtra os valores que são menores que 5 e o metodo reduce chama uma função callback para somar os valores maiores que 5, resultando 6+8+10=24.
 ______
 **5) Qual será o conteúdo do array lista após a execução do código? Indique a alternativa correta e justifique sua resposta.**
 
@@ -116,6 +122,8 @@ b) ["banana", "abacaxi", "manga"]
 c) ["banana", "abacaxi", "manga", "laranja"]
 
 d) ["banana", "maçã", "uva", "abacaxi", "manga"]
+
+A resposta correta é C, pois o método splice substitui os elementos do array nas posições 1 e dois pelos elementos "abacaxi" e "manga".
 ______
 **6) Abaixo há duas afirmações sobre herança em JavaScript. Indique a alternativa correta e justifique sua resposta**
 
@@ -130,6 +138,8 @@ b) As duas afirmações são verdadeiras, mas a segunda não justifica a primeir
 c) A primeira afirmação é verdadeira, e a segunda é falsa.
 
 d) A primeira afirmação é falsa, e a segunda é verdadeira.
+
+A alternativa correta é a letra A, pois ambas as afirmações são verdadeiras, e a segunda justifica a primeira. A herança em JavaScript é utilizada para compartilhar métodos e propriedades entre classes, permitindo que uma classe herde características de outra sem a necessidade de repetir código, o que torna a primeira afirmação verdadeira. Além disso, a herança em JavaScript é implementada por meio da palavra-chave extends, que permite que uma classe derive de outra, confirmando a veracidade da segunda afirmação. Como o uso de extends é o mecanismo que possibilita a herança mencionada na primeira afirmação, pode-se concluir que a segunda afirmação justifica a primeira, tornando a alternativa A correta.
 ______
 **7) Dado o seguinte código. Indique a alternativa correta e justifique sua resposta.**
 
@@ -173,6 +183,8 @@ c) Apenas II é verdadeira.
 
 d) Apenas I é verdadeira.
 
+A alternativa correta é a A, pois a classe funcionario usa extends para herdar os metodos da classe pessoa, e como os atributos nome e idade são públicos, podem ser acessados diretamente pela classe filha. Já o método apresentar da classe Funcionario sobrepõe o da classe Pessoa, pois dentro dele é chamado o apresentrar da classe pai, somada ao complemento desse método. 
+
 ______
 
 **8) Analise as afirmações a seguir. Indique a alternativa correta e justifique sua resposta.**
@@ -188,7 +200,7 @@ c) A asserção é verdadeira e a razão é verdadeira, mas a razão não explic
 
 d) A asserção é verdadeira e a razão é verdadeira, e a razão explica a asserção.
 
-______
+A alternativa correta é a letra B, pois a asserção é verdadeira e a razão é falsa. O conceito de polimorfismo em Programação Orientada a Objetos permite que objetos de diferentes tipos respondam à mesma mensagem de maneiras distintas, o que está correto na asserção. Em JavaScript, o polimorfismo pode ser implementado de várias formas, como a sobrescrita de métodos em classes derivadas, mas não através de sobrecarga de métodos como ocorre em linguagens como Java e C++, pois JavaScript não suporta sobrecarga nativa de métodos em uma mesma classe. Assim, a razão está incorreta, tornando a alternativa B a resposta correta.
 
 # Questões dissertativas
 9) O seguinte código deve retornar a soma do dobro dos números de um array, mas contém erros. Identifique os problema e corrija o código para que funcione corretamente. Adicione comentários ao código explicado sua solução para cada problema.
@@ -203,6 +215,18 @@ function somaArray(numeros) {
 }
 console.log(somaArray([1, 2, 3, 4]));
 ```
+Resposta: 
+
+```javascript
+function somaArray(numeros) {
+    var soma=0;//soma é declarado e inicializado como 0
+    for (let i = 0; i < numeros.length; i++) { //substitui-se .size por .length, uma propriedade mais adequada para tamanho de array
+        soma += (2*numeros[i]); //soma recebe seu proprio valor somado ao dobro do valor do elemento da posição i
+    }
+    return soma;
+}
+console.log(somaArray([1, 2, 3, 4]));
+```
 ______
 10) Crie um exemplo prático no qual você tenha duas classes:
 
@@ -210,3 +234,22 @@ ______
 - Uma classe `Livro` que herda de `Produto` e modifica o método `calcularDesconto()`, aplicando um desconto de 20% no preço dos livros.
 
 Explique como funciona a herança nesse contexto e como você implementaria a modificação do método na classe `Livro`.
+```javascript
+  class Produto{
+    constructor(nome, preco){
+      this.nome=nome;
+      this.preco=preco;
+    }
+    calcularDesconto(preco){
+      preco*=0.9;
+    }
+  }
+  class Livro extends Produto{
+    constructor(nome, preco){
+      super(nome, preco);
+    }
+    calcularDesconto(preco){
+      preco*=0.8;
+    }
+  }
+  ```
